@@ -8,7 +8,6 @@ export default function Settings() {
   const {
     studentName, setStudentName,
     settings, updateSettings,
-    theme, toggleTheme,
     clearAllData, resetDemoData,
   } = useApp()
   const { success, warning } = useToast()
@@ -107,31 +106,7 @@ export default function Settings() {
           </form>
         </section>
 
-        {/* ── Appearance ──────────────────────────────────────────── */}
-        <section className="card settings-section">
-          <div className="settings-section-header">
-            <span className="settings-section-icon">🎨</span>
-            <div>
-              <h3 className="settings-section-title">Appearance</h3>
-              <p className="settings-section-sub">Adjust the visual theme of the application</p>
-            </div>
-          </div>
-
-          <div className="settings-theme-row">
-            <div className="settings-theme-info">
-              <p className="settings-theme-current">
-                Current theme: <strong>{theme === 'light' ? '☀️ Light mode' : '🌙 Dark mode'}</strong>
-              </p>
-              <p className="settings-hint">Toggle between light and dark mode</p>
-            </div>
-            <button
-              className="btn btn-secondary"
-              onClick={() => { toggleTheme(); success(`Switched to ${theme === 'light' ? 'dark' : 'light'} mode`) }}
-            >
-              {theme === 'light' ? '🌙 Switch to Dark' : '☀️ Switch to Light'}
-            </button>
-          </div>
-        </section>
+        {/* ── Appearance section removed — Dark Mode is the only theme ── */}
 
         {/* ── Notifications ────────────────────────────────────────── */}
         <section className="card settings-section">
