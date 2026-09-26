@@ -16,7 +16,7 @@ const PAGE_TITLES = {
 }
 
 export default function TopNav({ onMenuClick }) {
-  const { theme, toggleTheme, studentName, setStudentName } = useApp()
+  const { studentName, setStudentName } = useApp()
   const location = useLocation()
   const [editingName, setEditingName] = useState(false)
   const [nameInput, setNameInput] = useState(studentName)
@@ -76,14 +76,6 @@ export default function TopNav({ onMenuClick }) {
           </button>
         )}
 
-        <button
-          className="btn btn-secondary btn-icon topnav-theme-btn"
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙' : '☀️'}
-        </button>
       </div>
     </header>
   )

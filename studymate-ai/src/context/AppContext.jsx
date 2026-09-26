@@ -69,7 +69,8 @@ const DEFAULT_SETTINGS = {
 
 // ── Provider ──────────────────────────────────────────────────────────────────
 export function AppProvider({ children }) {
-  const [theme,       setTheme]       = useLocalStorage('sm_theme',       'light')
+  // Dark mode is the only supported theme. Override any stored light preference.
+  const [theme,       setTheme]       = useLocalStorage('sm_theme',       'dark')
   const [studentName, setStudentName] = useLocalStorage('sm_studentName', 'Student')
   const [settings,    setSettings]    = useLocalStorage('sm_settings',    DEFAULT_SETTINGS)
   const [subjects,    setSubjects]    = useLocalStorage('sm_subjects',    SEED_SUBJECTS)
@@ -78,13 +79,16 @@ export function AppProvider({ children }) {
   const [exams,       setExams]       = useLocalStorage('sm_exams',       SEED_EXAMS)
   const [sessions,    setSessions]    = useLocalStorage('sm_sessions',    SEED_SESSIONS)
 
-  // Apply theme to document root
+  // Apply dark theme to document root — dark mode is always forced
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
+    // Always force dark regardless of any stored value
+    localStorage.setItem('sm_theme', JSON.stringify('dark'))
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }, [])
 
-  const toggleTheme = useCallback(() =>
-    setTheme(t => t === 'light' ? 'dark' : 'light'), [setTheme])
+  // toggleTheme is kept in the context value for API compatibility
+  // but is a no-op — dark mode is the only supported theme
+  const toggleTheme = useCallback(() => {}, [])
 
   const updateSettings = useCallback((patch) =>
     setSettings(prev => ({ ...prev, ...patch })), [setSettings])
