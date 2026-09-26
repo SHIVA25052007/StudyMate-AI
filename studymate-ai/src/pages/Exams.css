@@ -1,0 +1,95 @@
+/* =====================================================
+   Exams Page
+   ===================================================== */
+.exams-page { display: flex; flex-direction: column; gap: 20px; }
+
+/* ── Controls card (tabs + search) ──────────────────── */
+.ex-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.ex-tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+}
+.ex-tab {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color var(--transition), border-color var(--transition);
+  font-family: var(--font-sans);
+}
+.ex-tab.active             { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.ex-tab:hover:not(.active) { color: var(--text-primary); }
+
+/* Search */
+.ex-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ex-search-icon  { position: absolute; left: 11px; font-size: 14px; pointer-events: none; }
+.ex-search-input { padding-left: 34px; font-size: 14px; }
+.ex-search-clear { position: absolute; right: 6px; font-size: 12px; color: var(--text-muted); }
+
+/* ── List ───────────────────────────────────────────── */
+.ex-list { display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Card ───────────────────────────────────────────── */
+.ex-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 22px;
+  transition: transform .12s ease;
+}
+.ex-card:hover { transform: translateX(3px); }
+.ex-past       { opacity: .65; }
+
+/* Countdown ring */
+.ex-card-left { flex-shrink: 0; }
+.exam-countdown-ring {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.crd-num   { font-size: 24px; font-weight: 800; line-height: 1; }
+.crd-label { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; margin-top: 1px; }
+
+/* Info */
+.ex-card-info { flex: 1; min-width: 0; }
+.ex-card-header {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.ex-title { font-size: 16px; font-weight: 600; }
+
+.ex-meta       { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.ex-meta-item  { font-size: 13px; color: var(--text-secondary); }
+.ex-notes      { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+.ex-urgency-bar   { margin-top: 10px; }
+.ex-urgency-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; }
+
+/* Actions */
+.ex-card-actions { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+
+/* Form */
+.ex-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .ex-row-2 { grid-template-columns: 1fr; } }
+
+@media (max-width: 560px) {
+  .ex-card         { flex-wrap: wrap; }
+  .ex-card-actions { flex-direction: row; }
+}

@@ -1,0 +1,182 @@
+/* =====================================================
+   Sidebar
+   ===================================================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Mobile: hidden off-screen by default */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+  .sidebar--open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Mobile overlay */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99;
+}
+
+/* Close button — only show on mobile */
+.sidebar-close { display: none; }
+@media (max-width: 768px) {
+  .sidebar-close { display: inline-flex; }
+}
+
+/* Logo */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 16px;
+}
+.sidebar-logo-icon { font-size: 26px; line-height: 1; }
+.sidebar-logo-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.sidebar-logo-ai {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.sidebar-logo > .sidebar-close { margin-left: auto; }
+
+/* Student card */
+.sidebar-student {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 14px;
+}
+.sidebar-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sidebar-student-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+.sidebar-student-role { font-size: 12px; color: var(--text-muted); }
+
+/* Stats row */
+.sidebar-stats {
+  display: flex;
+  gap: 0;
+  padding: 0 14px 14px;
+}
+.sidebar-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  margin: 0 3px;
+}
+.sidebar-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.sidebar-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
+
+.sidebar-divider { height: 1px; background: var(--border); margin: 0 16px 12px; }
+
+/* Navigation */
+.sidebar-nav { flex: 1; padding: 0 10px; }
+.sidebar-nav-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: .08em;
+  padding: 0 10px 8px;
+  text-transform: uppercase;
+}
+.sidebar-nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  position: relative;
+}
+.sidebar-nav-link:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.sidebar-nav-link.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+.sidebar-nav-icon { font-size: 16px; line-height: 1; flex-shrink: 0; }
+.sidebar-nav-label { flex: 1; }
+
+/* Notification badge */
+.sidebar-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+/* Footer */
+.sidebar-footer {
+  padding: 14px 20px 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+.sidebar-footer-text { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.sidebar-footer-sub  { font-size: 11px; color: var(--text-muted); margin-top: 2px; }

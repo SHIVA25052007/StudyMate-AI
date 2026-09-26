@@ -1,0 +1,137 @@
+/* =====================================================
+   Assignments Page
+   ===================================================== */
+.assignments-page { display: flex; flex-direction: column; gap: 20px; }
+
+/* ── Filter bar ─────────────────────────────────────── */
+.as-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 18px;
+}
+
+/* Search row */
+.as-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.as-search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 14px;
+  pointer-events: none;
+}
+.as-search-input  { padding-left: 36px; font-size: 14px; }
+.as-search-clear  { position: absolute; right: 8px; font-size: 12px; color: var(--text-muted); }
+
+/* Filter row */
+.as-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.as-filters       { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.as-filter-select { width: auto; min-width: 120px; padding: 7px 11px; font-size: 13px; }
+.as-count         { font-size: 13px; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+
+/* ── List ───────────────────────────────────────────── */
+.as-list { display: flex; flex-direction: column; gap: 10px; }
+
+.as-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .12s ease;
+}
+.as-item:hover { transform: translateX(2px); }
+.as-completed { opacity: .65; }
+.as-completed .as-title { text-decoration: line-through; color: var(--text-muted); }
+
+.as-priority-stripe {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+
+/* Status cycle button */
+.as-status-btn {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  margin-left: 4px;
+  margin-top: 2px;
+}
+.as-status-btn--pending      { color: var(--text-muted); }
+.as-status-btn--pending:hover    { border-color: var(--warning); color: var(--warning); }
+.as-status-btn--in-progress      { border-color: var(--info); color: var(--info); background: var(--info-light); }
+.as-status-btn--in-progress:hover { background: var(--info); color: #fff; border-color: var(--info); }
+.as-status-btn--completed        { border-color: var(--success); background: var(--success); color: #fff; }
+.as-status-btn--completed:hover  { background: #16a34a; }
+
+.as-body  { flex: 1; min-width: 0; }
+.as-title { font-size: 15px; font-weight: 500; }
+.as-desc  {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.as-meta  { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+
+.as-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+  min-width: 90px;
+}
+.as-actions { display: flex; gap: 4px; }
+
+/* Due badges */
+.as-due-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.due-done     { background: var(--success-light); color: var(--success); }
+.due-overdue  { background: var(--danger-light);  color: var(--danger);  }
+.due-today    { background: var(--warning-light); color: var(--warning); }
+.due-soon     { background: var(--warning-light); color: var(--warning); }
+.due-upcoming { background: var(--info-light);    color: var(--info);    }
+
+/* Form */
+.as-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .as-row-2 { grid-template-columns: 1fr; } }
+
+/* Mobile */
+@media (max-width: 560px) {
+  .as-item   { flex-wrap: wrap; }
+  .as-right  {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    min-width: 0;
+  }
+}
